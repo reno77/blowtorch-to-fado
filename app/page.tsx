@@ -69,7 +69,12 @@ export default function Home() {
       const result = await importToDatabase(dbBuffer, aliases, triggers, selectedConnection.id)
 
       // Download the updated database
-      const blob = new Blob([result.dbBuffer], { type: 'application/x-sqlite3' })
+      // Convert Uint8Array to ArrayBuffer for Blob compatibility
+      const arrayBuffer = result.dbBuffer.buffer.slice(
+        result.dbBuffer.byteOffset,
+        result.dbBuffer.byteOffset + result.dbBuffer.byteLength
+      )
+      const blob = new Blob([arrayBuffer], { type: 'application/x-sqlite3' })
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
