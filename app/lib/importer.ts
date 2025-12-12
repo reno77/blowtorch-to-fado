@@ -97,7 +97,7 @@ export async function getConnections(dbBuffer: ArrayBuffer): Promise<Connection[
 
   try {
     // Check if Connection table exists
-    const tables = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='Connection'")
+    const tables = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='Connections'")
     
     if (!tables.length || !tables[0]?.values.length) {
       db.close()
