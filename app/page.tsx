@@ -73,7 +73,7 @@ export default function Home() {
       const arrayBuffer = result.dbBuffer.buffer.slice(
         result.dbBuffer.byteOffset,
         result.dbBuffer.byteOffset + result.dbBuffer.byteLength
-      )
+      ) as ArrayBuffer
       const blob = new Blob([arrayBuffer], { type: 'application/x-sqlite3' })
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement('a')
