@@ -105,7 +105,7 @@ export async function getConnections(dbBuffer: ArrayBuffer): Promise<Connection[
     }
 
     // Get all connections
-    const result = db.exec('SELECT id, display_name, host_name, port_number FROM Connection ORDER BY sort_order, display_name')
+    const result = db.exec('SELECT id, display_name, host_name, port_number FROM Connections ORDER BY sort_order, display_name')
     
     if (!result.length || !result[0]?.values.length) {
       db.close()
